@@ -3,7 +3,7 @@ import ItemList from "./ItemList";
 
 const ItemListContainer = (props) => {
   return (
-    <div>
+    <div className="container">
       <h1>{props.greeting}</h1>
       <ItemList />
     </div>

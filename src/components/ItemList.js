@@ -4,15 +4,15 @@ const ItemList = () => {
   const [info, setInfo] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch("https://breakingbadapi.com/api/characters")
       .then((response) => response.json())
       .then((res) => setInfo(res));
   }, []);
 
   return (
-    <div className="container d-flex">
+    <div className="container row text-center">
       {info.map((data) => {
-        return <Item className="col-4" key={data.id} data={data} />;
+        return <Item key={data.id} data={data} />;
       })}
     </div>
   );
