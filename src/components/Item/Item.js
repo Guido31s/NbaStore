@@ -1,13 +1,13 @@
 import React from "react";
-import ItemCount from "./ItemCount";
+import ItemCount from "../ItemCount/ItemCount";
 import Card from "react-bootstrap/Card";
 const Item = ({ data }) => {
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={data.img} />
+      <Card.Img variant="top" src={data.image} />
       <Card.Body>
-        <Card.Title>{data.name}</Card.Title>
-        <Card.Text>{data.status}</Card.Text>
+        <Card.Title>{data.title}</Card.Title>
+        <Card.Text>${data.price}</Card.Text>
         <ItemCount
           initial="1"
           stock="10"

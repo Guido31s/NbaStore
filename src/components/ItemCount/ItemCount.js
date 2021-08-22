@@ -9,7 +9,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   const decrementOption = () => {
-    if (counter >= initial) {
+    if (counter > initial) {
       setCounter(counter - 1);
     }
   };
