@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import ItemDetailList from "../ItemDetailList/ItemDetailList";
+import ItemDetail from "../ItemDetail/ItemDetail";
 import Spinner from "react-bootstrap/Spinner";
 const ItemDetailContainer = () => {
-  const [detail, setDetail] = useState([]);
+  const [detail, setDetail] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://fakestoreapi.com/products/1")
       .then((response) => response.json())
       .then((res) => setDetail(res));
     setTimeout(() => {
@@ -16,11 +16,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="container">
-      {isLoading ? (
-        <Spinner animation="grow" />
-      ) : (
-        <ItemDetailList data={detail} />
-      )}
+      {isLoading ? <Spinner animation="grow" /> : <ItemDetail data={detail} />}
     </div>
   );
 };
