@@ -1,0 +1,43 @@
+
+nav {
+    display: flex;
+    width: 100%;
+    min-height: 10vh;
+    background-color: #2C394B;
+    align-items: center;
+    justify-content: center;
+  }
+  nav div { 
+  color: white;
+  text-shadow: 1px 2px 1px #232526;
+  justify-self: start;
+  margin-right: 30%;
+  font-size: 1.5em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+  .Navigation  {
+    background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%);
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    border-radius: 2px;
+    display: block;
+  }
+  
+  
+ .Navigation:hover {
+     background-position: right center;
+     color: #fff;
+     text-decoration: none;
+   }
