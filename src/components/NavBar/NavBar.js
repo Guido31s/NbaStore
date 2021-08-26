@@ -1,7 +1,8 @@
 import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
-const NavBar = () => {
+
+const NavBar = ({ data }) => {
   return (
     <nav>
       <div>
@@ -19,6 +20,15 @@ const NavBar = () => {
         <Link className="Navigation" to="/contact">
           Contacto
         </Link>
+        {data.map((data) => {
+          return (
+            <li>
+              <Link className="Navigation" key={data} to={`/category/${data}`}>
+                {data}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
       <CartWidget />
     </nav>

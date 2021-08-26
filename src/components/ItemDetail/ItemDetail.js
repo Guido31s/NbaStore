@@ -7,11 +7,15 @@ const ItemDetail = ({ data }) => {
       <Card.Img variant="top" src={data.image} />
       <Card.Body>
         <Card.Title>{data.title}</Card.Title>
-        <Card.Text>{data.price}</Card.Text>
+        <Card.Text>Precio: ${data.price}</Card.Text>
         <Card.Text>{data.category}</Card.Text>
         <Card.Text>{data.description}</Card.Text>
       </Card.Body>
-      <ItemCount stock="15" />
+      <ItemCount
+        initial="1"
+        stock="10"
+        onAdd={() => console.log(`Se han añadido los productos`)}
+      />
     </Card>
   );
 };

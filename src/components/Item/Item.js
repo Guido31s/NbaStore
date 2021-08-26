@@ -1,5 +1,4 @@
 import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
 import Card from "react-bootstrap/Card";
 const Item = ({ data }) => {
   return (
@@ -7,12 +6,7 @@ const Item = ({ data }) => {
       <Card.Img variant="top" src={data.image} />
       <Card.Body>
         <Card.Title>{data.title}</Card.Title>
-        <Card.Text>${data.price}</Card.Text>
-        <ItemCount
-          initial="1"
-          stock="10"
-          onAdd={() => console.log(`Se han añadido los productos`)}
-        />
+        <Card.Text>Precio: ${data.price}</Card.Text>
       </Card.Body>
     </Card>
   );
