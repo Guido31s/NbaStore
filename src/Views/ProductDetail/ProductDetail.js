@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-
 import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
+
 const ProductDetail = ({ match }) => {
-  console.log("que pija sos", match);
   const [detail, setDetail] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getInfoID = async () => {
+    setLoading(true);
+    const data = await axios(
+      `https://fakestoreapi.com/products/${prodID}`
+    ).then((res) => setDetail(res.data));
+    setLoading(false);
+  };
+
   let prodID = match.params.id;
   useEffect(() => {
-    axios(`https://fakestoreapi.com/products/${prodID}`).then((res) =>
-      setDetail(res.data)
-    );
+    getInfoID();
   }, [prodID]);
   return (
     <div className="container">
-      <ItemDetail data={detail} />
+      {loading ? <Spinner animation="border" /> : <ItemDetail data={detail} />}
     </div>
   );
 };

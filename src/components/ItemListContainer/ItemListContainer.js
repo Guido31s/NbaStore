@@ -20,7 +20,7 @@ const ItemListContainer = (props) => {
     }
   }, [categoryId]);
   return (
-    <div class="d-flex justify-content-between">
+    <div>
       <h1>{props.greeting}</h1>
       <ItemList data={info} />
     </div>
