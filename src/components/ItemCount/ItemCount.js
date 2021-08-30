@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-const ItemCount = ({ stock, initial, onAdd }) => {
-  const [counter, setCounter] = useState(1);
+const ItemCount = ({ stock, initial, onAdd}) => {
+  const [counter, setCounter] = useState(0);
+
 
   const incrementOption = () => {
     if (counter < stock) {
@@ -13,6 +14,15 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       setCounter(counter - 1);
     }
   };
+
+  const buyButton = () => {
+if (counter > 0) {
+  onAdd(counter)
+  setCounter(0)
+  console.log(`Se han añadido ${counter} productos!`)
+
+}
+  }
 
   return (
     <div className="container justify-content-center d-flex">
@@ -35,7 +45,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         <div>
           <button
             className="btn btn-outline-secondary rounded-0 mt-1"
-            onClick={onAdd}
+            onClick={buyButton}
           >
             Añadir al carrito
           </button>

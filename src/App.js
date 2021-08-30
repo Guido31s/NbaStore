@@ -8,6 +8,7 @@ import Contact from "./Views/Contact/Contact";
 import About from "./Views/About/About";
 import ProductDetail from "./Views/ProductDetail/ProductDetail";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import CartComponent from "./Views/CartComponent/CartComponent";
 function App() {
   const [cat, setCat] = useState([]);
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/contact" component={Contact} />
           <Route path="/category/:id" component={ItemListContainer} />
           <Route path="/item/:id" component={ProductDetail} />
+          <Route path="/cart" component={CartComponent} />
         </Switch>
       </div>
     </Router>
