@@ -9,6 +9,10 @@ import About from "./Views/About/About";
 import ProductDetail from "./Views/ProductDetail/ProductDetail";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import CartComponent from "./Views/CartComponent/CartComponent";
+import { CartProvider } from "./context/CartContext";
+
+
+
 function App() {
   const [cat, setCat] = useState([]);
   useEffect(() => {
@@ -18,19 +22,21 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="App">
-        <NavBar data={cat} />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/category/:id" component={ItemListContainer} />
-          <Route path="/item/:id" component={ProductDetail} />
-          <Route path="/cart" component={CartComponent} />
-        </Switch>
-      </div>
-    </Router>
+      <CartProvider>
+        <Router>
+          <div className="App">
+            <NavBar data={cat} />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/category/:id" component={ItemListContainer} />
+              <Route path="/item/:id" component={ProductDetail} />
+              <Route path="/cart" component={CartComponent} />
+            </Switch>
+          </div>
+        </Router>
+      </CartProvider>
   );
 }
 

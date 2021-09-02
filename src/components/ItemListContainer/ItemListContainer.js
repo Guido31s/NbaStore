@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 
+
 const ItemListContainer = (props) => {
   const [info, setInfo] = useState([]);
   const categoryId = useParams();
@@ -28,4 +29,5 @@ const ItemListContainer = (props) => {
 };
 
 export default ItemListContainer;
+
 

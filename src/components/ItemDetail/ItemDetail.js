@@ -1,14 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import ItemCount from "../ItemCount/ItemCount";
 import {Link} from "react-router-dom"
+import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ data }) => {
 
-const [counter, setCounter] = useState(0)
+
+const { addToCart} = useCartContext()
 
 const onAdd = (quantityToAdd) => {
-  setCounter(quantityToAdd)
+
+  addToCart({data}, quantityToAdd)
 }
 
   return (
@@ -21,7 +24,7 @@ const onAdd = (quantityToAdd) => {
         <Card.Text>{data.description}</Card.Text>
       </Card.Body>
       <div style={{display: "inline"}}>
-      {counter > 0 ? (<Link to="/cart">
+      {onAdd === true ? (<Link to="/cart">
         <button className="btn btn-outline-secondary rounded-0 mt-1">Comprar</button>
       </Link>) : <ItemCount
         initial="1"
