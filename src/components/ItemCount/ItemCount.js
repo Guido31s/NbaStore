@@ -38,7 +38,8 @@ const ItemCount = ({ stock, initial, onAdd}) => {
         <div>
           <button
             className="btn btn-outline-secondary rounded-0 mt-1"
-            onClick={() => onAdd(counter)}
+            onClick={() => {onAdd(counter)
+            setCounter(0)}}
           >
             Añadir al carrito
           </button>

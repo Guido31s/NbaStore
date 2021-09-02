@@ -30,7 +30,10 @@ const NavBar = ({ data }) => {
           );
         })}
       </ul>
-      <CartWidget />
+      <Link to="/cart">
+               <CartWidget />
+        </Link>
+
     </nav>
   );
 };
