@@ -22,7 +22,8 @@ console.log(cart)
     };
 
 const removeItem = (itemId) => {
-    setCart(cart.filter((element) => element.data.id !== itemId))
+    const delItem = cart.filter((e) => e.data.id !== itemId)
+    setCart(delItem)
 };
 
 const clear = () => setCart([])

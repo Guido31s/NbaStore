@@ -15,7 +15,7 @@ const ItemDetail = ({ data }) => {
   }
   
     return (
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem" }} className="container row text-center justify-content-between m-auto">
         <Card.Img variant="top" src={data.image} />
         <Card.Body>
           <Card.Title>{data.title}</Card.Title>

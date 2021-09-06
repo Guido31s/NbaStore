@@ -21,7 +21,7 @@ const ItemListContainer = (props) => {
     }
   }, [categoryId]);
   return (
-    <div>
+    <div className="container row text-center justify-content-between m-auto">
       <h1>{props.greeting}</h1>
       <ItemList data={info} />
     </div>
