@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const ItemCount = ({ stock, initial, onAdd}) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
 
   const incrementOption = () => {

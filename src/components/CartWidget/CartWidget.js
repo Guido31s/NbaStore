@@ -9,10 +9,12 @@ const CartWidget = () => {
 const totalItem = cart.reduce((acc, item) => {
   return acc + item.quantity
 }, 0)
-  return (
-    <>
-      <FontAwesomeIcon icon={faShoppingCart} style={{ color: "white" }} /> {totalItem}
-    </>
+
+  return ( <div>
+    {totalItem > 1 ?  
+      <><FontAwesomeIcon icon={faShoppingCart} style={{ color: "white" }} />{totalItem}</> : <></>
+    }
+    </div>
   );
 };
 

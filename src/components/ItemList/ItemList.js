@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ItemList = ({ data }) => {
   return (
-    <div className="container-fluid row text-center justify-content-between m-auto">
+    <div>
       {data.map((data) => {
         return (
           <div key={data.id}>
