@@ -10,22 +10,32 @@ import ProductDetail from "./Views/ProductDetail/ProductDetail";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import CartComponent from "./Views/CartComponent/CartComponent";
 import { CartProvider } from "./context/CartContext";
-
+import { db } from "./components/Firebase/Firebase";
+import { collection, query, getDocs } from 'firebase/firestore';
 
 
 function App() {
-  const [cat, setCat] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    const docs = [];
+    const q = query(collection(db, 'categories'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      docs.push(doc.id);
+    });
+    setCategories(docs);
+  };
+
   useEffect(() => {
-    axios("https://fakestoreapi.com/products/categories").then((res) =>
-      setCat(res.data)
-    );
+    getCategories();
   }, []);
 
   return (
       <CartProvider>
         <Router>
           <div className="App">
-            <NavBar data={cat} />
+            <NavBar data={categories} />
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/about" component={About} />

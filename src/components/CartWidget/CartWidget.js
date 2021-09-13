@@ -12,7 +12,7 @@ const totalItem = cart.reduce((acc, item) => {
 
   return ( <div>
     {totalItem > 1 ?  
-      <><FontAwesomeIcon icon={faShoppingCart} style={{ color: "white" }} />{totalItem}</> : <></>
+      <><FontAwesomeIcon icon={faShoppingCart} style={{ color: "black", marginRight: "5px" }} />{totalItem}</> : <></>
     }
     </div>
   );

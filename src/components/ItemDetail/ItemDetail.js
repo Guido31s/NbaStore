@@ -11,31 +11,32 @@ const ItemDetail = ({ data }) => {
   const { addToCart} = useCartContext()
   
   const onAdd = (quantity) => {
-    setCart((addToCart (data, quantity)), cart);
+    setCart((addToCart (data[0], quantity)), cart);
   }
   
     return (
       <div className="container-fluid justify-content-center">
-<div className="d-flex align-items-center row">
-      <div className="col-12 col-xl-6"><img className="img-fluid" src={data.image}></img></div>
-        <Card.Body className="col-12 col-xl-6 text-left">
-          <Card.Title>{data.title}</Card.Title>
-          <Card.Text>Precio: ${data.price}</Card.Text>
-          <Card.Text>{data.category}</Card.Text>
-          <Card.Text>{data.description}</Card.Text><ItemCount
-          initial="1"
-          stock="10"
-          onAdd={onAdd}
-        /> <div style={{display: "inline"}}>
-       
-        <Link to="/cart">
-          <button className="btn btn-outline-secondary rounded-0 mt-1">Comprar</button>
-        </Link>
+        <div className="d-flex align-items-center row">
+          <div className="col-12 col-xl-6"><img className="img-fluid" src={data[0].img2}></img></div>
+            <Card.Body className="col-12 col-xl-6 text-left">
+              <Card.Title>{data[0].title}</Card.Title>
+              <Card.Text>Precio: ${data[0].price}</Card.Text>
+              <Card.Text>{data[0].category}</Card.Text>
+              <Card.Text>{data[0].description}</Card.Text><ItemCount
+              initial="1"
+              stock="10"
+              onAdd={onAdd}
+            /> 
+          <div style={{display: "inline"}}>
+          
+            <Link to="/cart">
+              <button className="btn btn-outline-secondary rounded-0 mt-1">Comprar</button>
+            </Link>
+            </div>
+            </Card.Body>
+          
         </div>
-        </Card.Body>
-       
-        </div>
-  </div>
+      </div>
     );
   };
   
