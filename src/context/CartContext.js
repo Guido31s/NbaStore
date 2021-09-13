@@ -12,7 +12,7 @@ console.log(cart)
         if (isInCart(data.id)) {
             const newCart = cart.map((cartElement) => {
                 if (cartElement.id === data.id) {
-                    return { ... cartElement, quantity: cartElement.quantity + quantity };
+                    return { ...cartElement, quantity: cartElement.quantity + quantity };
                 } else return cartElement;
             });
             setCart(newCart);
@@ -23,7 +23,7 @@ console.log(cart)
 
 const removeItem = (itemId) => {
 
-    setCart(cart.filter((e) => e.id != itemId))
+    setCart(cart.filter((e) => e.id !== itemId))
 };
 
 const clear = () => setCart([])

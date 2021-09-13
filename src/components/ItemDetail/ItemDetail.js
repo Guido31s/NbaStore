@@ -15,25 +15,27 @@ const ItemDetail = ({ data }) => {
   }
   
     return (
-      <Card style={{ width: "18rem" }} className="container row text-center justify-content-between m-auto">
-        <Card.Img variant="top" src={data.image} />
-        <Card.Body>
+      <div className="container-fluid justify-content-center">
+<div className="d-flex align-items-center row">
+      <div className="col-12 col-xl-6"><img className="img-fluid" src={data.image}></img></div>
+        <Card.Body className="col-12 col-xl-6 text-left">
           <Card.Title>{data.title}</Card.Title>
           <Card.Text>Precio: ${data.price}</Card.Text>
           <Card.Text>{data.category}</Card.Text>
-          <Card.Text>{data.description}</Card.Text>
-        </Card.Body>
-        <div style={{display: "inline"}}>
-       <ItemCount
+          <Card.Text>{data.description}</Card.Text><ItemCount
           initial="1"
           stock="10"
           onAdd={onAdd}
-        />
+        /> <div style={{display: "inline"}}>
+       
         <Link to="/cart">
           <button className="btn btn-outline-secondary rounded-0 mt-1">Comprar</button>
         </Link>
         </div>
-      </Card>
+        </Card.Body>
+       
+        </div>
+  </div>
     );
   };
   
