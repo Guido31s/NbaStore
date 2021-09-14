@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios";
 import Home from "./Views/Home/Home";
 import Contact from "./Views/Contact/Contact";
 import About from "./Views/About/About";
@@ -11,7 +10,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import CartComponent from "./Views/CartComponent/CartComponent";
 import { CartProvider } from "./context/CartContext";
 import { db } from "./components/Firebase/Firebase";
-import { collection, query, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs, where } from 'firebase/firestore';
 
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
 
   const getCategories = async () => {
     const docs = [];
-    const q = query(collection(db, 'categories'));
+    const q = query(collection(db, 'items'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       docs.push(doc.id);
