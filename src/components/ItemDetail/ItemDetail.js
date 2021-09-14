@@ -18,11 +18,11 @@ const ItemDetail = ({ data }) => {
       <div className="container-fluid justify-content-center">
         <div className="d-flex align-items-center row">
           <div className="col-12 col-xl-6"><img className="img-fluid" src={data[0].img2}></img></div>
-            <Card.Body className="col-12 col-xl-6 text-left">
+            <Card.Body className="col-12 col-xl-6 mt-4">
               <Card.Title>{data[0].title}</Card.Title>
               <Card.Text>Precio: ${data[0].price}</Card.Text>
               <Card.Text>{data[0].category}</Card.Text>
-              <Card.Text>{data[0].description}</Card.Text><ItemCount
+              <Card.Text >{data[0].description}</Card.Text><ItemCount
               initial="1"
               stock="10"
               onAdd={onAdd}
