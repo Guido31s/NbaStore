@@ -34,9 +34,8 @@ const ProductDetail = ({
       }, 1000);
     }, [itemID])
 
-    return ( <
-      div className = "container" > {
-        loading ? < Spinner animation = "border" / > : < ItemDetail data = {
+    return ( <div className = "container" > {
+        loading ? < Spinner animation = "border" /> : < ItemDetail data = {
           items
         }
         />} </div>

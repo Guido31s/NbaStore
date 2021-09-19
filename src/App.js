@@ -21,7 +21,8 @@ function App() {
     const q = query(collection(db, 'items'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      docs.push(doc.id);
+      docs.push(doc.data().category);
+      console.log(docs)
     });
     setCategories(docs);
   };

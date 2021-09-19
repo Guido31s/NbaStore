@@ -11,9 +11,7 @@ const getItems = async () => {
   const q = query(collection(db, "items"));
   const querySnapShot = await getDocs(q);
   querySnapShot.forEach((doc) => {
-    // console.log(doc.id, " => ", doc.data());
     docs.push({...doc.data(), id: doc.id })
-    console.log(docs)
   })
   setItems(docs)
 };

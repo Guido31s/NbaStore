@@ -22,17 +22,18 @@ const ItemDetail = ({ data }) => {
               <Card.Title>{data[0].title}</Card.Title>
               <Card.Text>Precio: ${data[0].price}</Card.Text>
               <Card.Text>{data[0].category}</Card.Text>
-              <Card.Text >{data[0].description}</Card.Text><ItemCount
+              <Card.Text >{data[0].description}</Card.Text>
+              { cart < 1 ? <ItemCount
               initial="1"
               stock="10"
               onAdd={onAdd}
-            /> 
-          <div style={{display: "inline"}}>
+            /> :
+          <div style={{display: "inline"}}> 
           
             <Link to="/cart">
               <button className="btn btn-outline-secondary rounded-0 mt-1">Comprar</button>
             </Link>
-            </div>
+            </div>}
             </Card.Body>
           
         </div>
