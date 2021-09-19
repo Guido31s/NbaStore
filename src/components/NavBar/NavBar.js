@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import { Form, Button, FormControl, NavDropdown, Nav } from "react-bootstrap";
 
+
 const NavBar = ({ data }) => {
+
+
   return (
 <Navbar className="bg-light" bg="light" expand="lg">
   <Navbar.Brand href="#">NBA Store</Navbar.Brand>
@@ -23,15 +26,21 @@ const NavBar = ({ data }) => {
               Nosotros
             </Link>
           <NavDropdown className="navLink text-black" title="Categorias" id="navbarScrollingDropdown">
-          {data.map((data) => {
-              return (
-                <li>
-                  <Link className="navLink" key={data} to={`/category/${data}`}>
-                    {data}
+                  <li>
+                  <Link className="navLink"  to={`/category/hat`}>
+                    Hat
                   </Link>
-                </li>
-              );
-            })}
+                  </li>
+                  <li>
+                  <Link className="navLink"  to={`/category/jersey`}>
+                    Jersey
+                  </Link>
+                  </li>
+                  <li>
+                  <Link className="navLink" to={`/category/socks`}>
+                    Socks
+                  </Link>
+                  </li>
           </NavDropdown>
           <Link className="navLink" to="/contact">
               Contacto
