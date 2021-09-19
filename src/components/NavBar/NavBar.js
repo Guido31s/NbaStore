@@ -9,7 +9,7 @@ const NavBar = ({ data }) => {
 
 
   return (
-<Navbar className="bg-light" bg="light" expand="lg">
+<Navbar className="bg-light styles" bg="light" expand="lg">
   <Navbar.Brand href="#">NBA Store</Navbar.Brand>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
@@ -54,11 +54,11 @@ const NavBar = ({ data }) => {
     <Form className="d-flex">
       <FormControl
         type="search"
-        placeholder="Search"
-        className="mr-2 rounded-0"
+        placeholder="Buscar productos"
+        className="mr-2  rounded-0"
         aria-label="Search"
       />
-      <Button variant="btn btn-outline-secondary rounded-0">Buscar</Button>
+      <Button variant="btn btn-secondary rounded-0">Buscar</Button>
     </Form>
   </Navbar.Collapse>
 </Navbar>)};

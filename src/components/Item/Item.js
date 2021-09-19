@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+
 const Item = ({ data }) => {
   return (
     <Card style={{ width: "20rem" }} className="col-12 col-md-6 col-lg-4 col-xl-4 mt-5">

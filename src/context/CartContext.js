@@ -6,6 +6,9 @@ export const useCartContext = () => useContext(CartContext)
 export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([]);
 console.log(cart)
+
+
+
     const isInCart = (id) => cart.some((data) => data.id === id);
 
     const addToCart = (data, quantity) => {
