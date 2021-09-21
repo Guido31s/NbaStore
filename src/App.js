@@ -1,8 +1,7 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React from "react"
 import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Views/Home/Home";
 import Contact from "./Views/Contact/Contact";
 import Category from "./Views/Category/Category";
 import ProductDetail from "./Views/ProductDetail/ProductDetail";
@@ -20,7 +19,7 @@ function App() {
           <div className="App">
             <NavBar/>
             <Switch>
-              <Route path="/" exact component={ItemListContainer} />
+              <Route path="/" component={ItemListContainer} exact/>
               <Route path="/contact" component={Contact} />
               <Route path="/category/:id" component={Category} />
               <Route path="/item/:id" component={ProductDetail} />

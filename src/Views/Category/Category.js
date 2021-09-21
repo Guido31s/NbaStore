@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import { collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "../../components/Firebase/Firebase";
 import Item from "../../components/Item/Item";
 import {Link} from "react-router-dom"
@@ -8,14 +7,16 @@ const Category = ({match}) => {
   const catID = match.params.id;
 
   useEffect(() => {
-    const getCategory = async () => {
-      const docs = [];
-      const q = query(collection(db, "items"), where("category", "==", catID));
-      const querySnapShot = await getDocs(q);
-      querySnapShot.forEach((doc) => {
-        docs.push({...doc.data(), id: doc.id});
-      })
-      setCat(docs);
+    const getCategory = () => {
+      db.collection('items').where("category", "==", catID).onSnapshot((querySnapshot) => {
+        const docs = [];
+        querySnapshot.forEach((doc) => {
+          // console.log(doc.data(), doc.id);
+          docs.push({ ...doc.data(), id: doc.id });
+          // console.log(docs);
+        });
+        setCat(docs);
+      });
     };
     getCategory();
   }, [catID])

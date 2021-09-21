@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Form, Button, FormControl, NavDropdown, Nav } from "react-bootstrap";
 
 
-const NavBar = ({ data }) => {
+const NavBar = () => {
 
 
   return (
@@ -42,9 +42,6 @@ const NavBar = ({ data }) => {
                   </Link>
                   </li>
           </NavDropdown>
-          <Link className="navLink" to="/contact">
-              Contacto
-            </Link>
             <Link className="navLink" to="/cart">
                   <CartWidget />
             </Link> 

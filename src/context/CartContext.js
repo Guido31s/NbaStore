@@ -24,6 +24,8 @@ console.log(cart)
         }
     };
 
+    const totalPrice = cart.reduce((acc, item) => { return parseInt(acc + (item.quantity * item.price)) }, 0)
+
 const removeItem = (itemId) => {
 
     setCart(cart.filter((e) => e.id !== itemId))
@@ -32,7 +34,7 @@ const removeItem = (itemId) => {
 const clear = () => setCart([])
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeItem, clear }}>
+        <CartContext.Provider value={{ cart, addToCart, removeItem, clear, totalPrice }}>
             {children}
         </CartContext.Provider>
     )

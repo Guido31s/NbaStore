@@ -1,7 +1,69 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Form from 'react-bootstrap/Form'
+import { db } from "../../components/Firebase/Firebase";
+import firebase from "firebase/app"
+import { useCartContext } from "../../context/CartContext";
 const Contact = () => {
-  return <div>Contact</div>;
+
+  const {cart, totalPrice} = useCartContext();
+
+const [ name, setName] = useState("");
+const [ email, setEmail] = useState("");
+const [ phone, setPhone] = useState("");
+
+
+const handleOnChange = (e) => {
+  if (e.target.name === "name") {
+    setName(e.target.value)
+  } else if (e.target.name === "email") {
+    setEmail(e.target.value)
+  } else if (e.target.name === "phone") {
+    setPhone(e.target.value)
+  }
+}
+
+const endBuy = async (e) => {
+ e.preventDefault()
+  const newOrder = {
+    buyer: {
+      Nombre: name,
+      Correo: email,
+      Telefono: phone
+    },
+    items: cart,
+    date: firebase.firestore.Timestamp.fromDate(new Date()),
+    total: totalPrice
+  };
+  await db.collection("compras").add(newOrder);
+  db.collection("compras").onSnapshot((querySnapshot) => {
+   const getID = []
+    querySnapshot.forEach((doc) => {
+      getID.push(doc.id)
+    })
+    alert(getID)
+  })
+}
+
+
+  return (
+          <> <Form className="container w-25" onSubmit={endBuy}>
+            
+  <Form.Group className="m-3">
+  <Form.Label htmlFor="name">Nombre</Form.Label>
+    <Form.Control type="text" placeholder="Nombre..." name="name" id="name" value={name} onChange={handleOnChange}/>
+    <Form.Label htmlFor="email">Email</Form.Label>
+    <Form.Control type="email" placeholder="Email..." name="email" id="email" value={email} onChange={handleOnChange}/>
+    <Form.Label htmlFor="phone">Telefono</Form.Label>
+    <Form.Control type="number" placeholder="Telefono..." name="phone" id="phone" value={phone} onChange={handleOnChange}/>
+  </Form.Group>
+
+  
+ <button className="btn btn-outline-primary rounded-0" type="submit">
+    Continuar
+  </button> 
+</Form>
+</>
+  );
 };
 
 export default Contact;
