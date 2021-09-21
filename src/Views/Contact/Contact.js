@@ -23,26 +23,30 @@ const handleOnChange = (e) => {
 }
 
 const endBuy = async (e) => {
- e.preventDefault()
+  e.preventDefault();
   const newOrder = {
     buyer: {
       Nombre: name,
       Correo: email,
-      Telefono: phone
+      Telefono: phone,
     },
     items: cart,
     date: firebase.firestore.Timestamp.fromDate(new Date()),
-    total: totalPrice
+    total: totalPrice,
   };
   await db.collection("compras").add(newOrder);
-  db.collection("compras").onSnapshot((querySnapshot) => {
-   const getID = []
-    querySnapshot.forEach((doc) => {
-      getID.push(doc.id)
-    })
-    alert(getID)
-  })
-}
+  db.collection("compras")
+    .orderBy("date", "desc")
+    .limit(1)
+    .get()
+    .then((querySnapshot) => {
+      const getID = [];
+      querySnapshot.forEach((doc) => {
+        getID.push(doc.id);
+      });
+      alert(getID);
+    });
+};
 
 
   return (
