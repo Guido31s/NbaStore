@@ -1,13 +1,12 @@
 import React, { useState, useEffect} from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-
 import Spinner from "react-bootstrap/Spinner";
 import {db} from "../../components/Firebase/Firebase";
 
-const ProductDetail = ({ match }) => {
-
+const ProductDetail = ({match}) => {
+let itemID = match.params.id
     const [loading, setLoading] = useState(true);
-    let itemID = match.params.id;
+   
 
     const [items, setItems] = useState([]);
     console.log(items)

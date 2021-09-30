@@ -1,5 +1,5 @@
 import React, {useContext, useState, createContext} from "react"; 
-
+import {db} from "../components/Firebase/Firebase"
 export const CartContext = createContext();
 export const useCartContext = () => useContext(CartContext)
 
@@ -24,7 +24,7 @@ console.log(cart)
         }
     };
 
-    const totalPrice = cart.reduce((acc, item) => { return parseInt(acc + (item.quantity * item.price)) }, 0)
+const totalPrice = cart.reduce((acc, item) => { return parseInt(acc + (item.quantity * item.price)) }, 0)
 
 const removeItem = (itemId) => {
 
@@ -33,8 +33,17 @@ const removeItem = (itemId) => {
 
 const clear = () => setCart([])
 
+const updateItemStock = async (id, quantity) => {
+    const updateStock = db.collection("items").doc(id);
+    await updateStock.update({
+"stock": quantity
+    })
+}
+
+
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeItem, clear, totalPrice }}>
+        <CartContext.Provider value={{ cart, addToCart, removeItem, clear, totalPrice, updateItemStock }}>
             {children}
         </CartContext.Provider>
     )

@@ -38,7 +38,7 @@ const CartComponent = () => {
            </table>
            <h3>Total a pagar: ${totalPrice}</h3>
            {cartLength ? <div><button className="btn btn-md btn-danger rounded-0 m-3" onClick={clear}>Limpiar Carrito</button>
-           <Link to="/contact"><button className="btn btn-md btn-success rounded-0 m-3">Confirmar Compra</button></Link></div> : 
+           <Link to="/checkout"><button className="btn btn-md btn-success rounded-0 m-3">Confirmar Compra</button></Link></div> : 
            <Link to="/">
            <h3>No hay productos</h3> </Link>}
           </>

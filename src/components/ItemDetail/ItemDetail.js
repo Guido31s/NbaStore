@@ -25,13 +25,15 @@ const ItemDetail = ({ data }) => {
               <Card.Text >{data[0].description}</Card.Text>
               { cart < 1 ? <ItemCount
               initial="1"
-              stock="10"
+              stock={data[0].stock}
               onAdd={onAdd}
             /> :
           <div style={{display: "inline"}}> 
-          
+          <Link to="/">
+              <button className="btn btn-outline-secondary rounded-0 m-3">Seguir Comprando</button>
+            </Link>
             <Link to="/cart">
-              <button className="btn btn-outline-secondary rounded-0 mt-1">Comprar</button>
+              <button className="btn btn-outline-secondary rounded-0 m-3">Comprar</button>
             </Link>
             </div>}
             </Card.Body>

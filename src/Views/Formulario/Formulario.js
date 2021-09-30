@@ -3,9 +3,9 @@ import Form from 'react-bootstrap/Form'
 import { db } from "../../components/Firebase/Firebase";
 import firebase from "firebase/app"
 import { useCartContext } from "../../context/CartContext";
-const Contact = () => {
+const Formulario = () => {
 
-  const {cart, totalPrice} = useCartContext();
+  const {cart, totalPrice, updateItemStock} = useCartContext();
 
 const [ name, setName] = useState("");
 const [ email, setEmail] = useState("");
@@ -34,18 +34,11 @@ const endBuy = async (e) => {
     date: firebase.firestore.Timestamp.fromDate(new Date()),
     total: totalPrice,
   };
-  await db.collection("compras").add(newOrder);
-  db.collection("compras")
-    .orderBy("date", "desc")
-    .limit(1)
-    .get()
-    .then((querySnapshot) => {
-      const getID = [];
-      querySnapshot.forEach((doc) => {
-        getID.push(doc.id);
-      });
-      alert(getID);
-    });
+  const resp = await db.collection("compras").add(newOrder);
+  alert(resp.id)
+  cart.map((item) => {
+    return updateItemStock(item.id, item.stock - item.quantity)
+  })
 };
 
 
@@ -70,4 +63,4 @@ const endBuy = async (e) => {
   );
 };
 
-export default Contact;
+export default Formulario;
