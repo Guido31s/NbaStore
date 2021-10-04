@@ -1,5 +1,6 @@
 .styles a {
   color: black;
+  text-decoration: none;
 }
 .navLink {
     margin: 5px;

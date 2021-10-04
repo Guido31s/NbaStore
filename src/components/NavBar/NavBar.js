@@ -2,15 +2,15 @@ import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
-import { Form, Button, FormControl, NavDropdown, Nav } from "react-bootstrap";
-
+import {  NavDropdown, Nav } from "react-bootstrap";
+import image from "../NavBar/NBALOGO.png"
 
 const NavBar = () => {
 
 
   return (
 <Navbar className="bg-light styles" bg="light" expand="lg">
-  <Navbar.Brand href="#">NBA Store</Navbar.Brand>
+<Link to="/"><img src={image} alt="NBA Logo" width="50"/></Link>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
     <Nav
@@ -47,16 +47,7 @@ const NavBar = () => {
             </Link> 
         </div>
     </Nav>
-   
-    <Form className="d-flex">
-      <FormControl
-        type="search"
-        placeholder="Buscar productos"
-        className="mr-2  rounded-0"
-        aria-label="Search"
-      />
-      <Button variant="btn btn-secondary rounded-0">Buscar</Button>
-    </Form>
+
   </Navbar.Collapse>
 </Navbar>)};
 
