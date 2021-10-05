@@ -5,8 +5,6 @@ import firebase from "firebase/app"
 import { useCartContext } from "../../context/CartContext";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link } from "react-router-dom";
-// CartContext
-
 
 const Formulario = () => {
 

@@ -5,12 +5,12 @@ import 'firebase/firestore';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCk4H1GMHuEIUe66gVzZpspM4gZtSrKNJ4",
-  authDomain: "coderhouse-e-commerce.firebaseapp.com",
-  projectId: "coderhouse-e-commerce",
-  storageBucket: "coderhouse-e-commerce.appspot.com",
-  messagingSenderId: "299234941324",
-  appId: "1:299234941324:web:80dce5f40edfd935c29ea9"
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_FIREBASE_APPID
 };
 
 // Initialize Firebase

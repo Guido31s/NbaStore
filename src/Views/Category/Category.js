@@ -12,9 +12,7 @@ const Category = ({match}) => {
       db.collection('items').where("category", "==", catID).onSnapshot((querySnapshot) => {
         const docs = [];
         querySnapshot.forEach((doc) => {
-          // console.log(doc.data(), doc.id);
           docs.push({ ...doc.data(), id: doc.id });
-          // console.log(docs);
         });
         setCat(docs);
       });
