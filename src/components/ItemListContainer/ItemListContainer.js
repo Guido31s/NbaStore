@@ -22,7 +22,7 @@ useEffect(()=> {
 }, [])
 
   return (
-    <div className="container text-left">
+    <div className="container">
       <ItemList data={items} />
     </div>
   );
