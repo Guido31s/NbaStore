@@ -2,8 +2,8 @@ import React from "react";
 import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
 const Home = () => {
   return (
-    <div>
-      <ItemListContainer greeting="Productos" />
+    <div className="bg-dark">
+      <ItemListContainer />
     </div>
   );
 };

@@ -10,10 +10,9 @@ const totalItem = cart.reduce((acc, item) => {
   return acc + item.quantity
 }, 0)
 
-  return ( <div>
-    {totalItem > 1 ?  
-      <><FontAwesomeIcon icon={faShoppingCart} style={{ color: "black", marginRight: "5px" }} />{totalItem}</> : <></>
-    }
+  return ( 
+    <div>
+      <FontAwesomeIcon icon={faShoppingCart} style={{ color: "white", marginRight: "5px" }} />{totalItem}
     </div>
   );
 };

@@ -4,22 +4,16 @@ import Spinner from "react-bootstrap/Spinner";
 import {db} from "../../components/Firebase/Firebase";
 
 const ProductDetail = ({match}) => {
-let itemID = match.params.id
+    let itemID = match.params.id
     const [loading, setLoading] = useState(true);
-   
-
     const [items, setItems] = useState([]);
-    console.log(items)
 
- 
     useEffect(() => {
       const getItems = () => {
         db.collection('items').onSnapshot((querySnapshot) => {
           const docs = [];
           querySnapshot.forEach((doc) => {
-            // console.log(doc.data(), doc.id);
             docs.push({ ...doc.data(), id: doc.id });
-            // console.log(docs);
           });
           setItems(docs.filter((e) => e.id === itemID))
         });
@@ -30,7 +24,7 @@ let itemID = match.params.id
       }, 1000);
     }, [itemID])
 
-    return ( <div className = "container" > {
+    return ( <div className = "container mt-3"> {
         loading ? < Spinner animation = "border" /> : < ItemDetail data = {
           items
         }

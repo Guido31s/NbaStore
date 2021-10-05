@@ -1,8 +1,13 @@
 .styles a {
-  color: black;
+  color: white;
   text-decoration: none;
+
+}
+.styles a:hover {
+  color: black;
 }
 .navLink {
     margin: 5px;
-text-decoration: none;
+    text-decoration: none;
 }
+

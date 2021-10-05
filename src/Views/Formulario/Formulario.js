@@ -10,49 +10,47 @@ import { Link } from "react-router-dom";
 
 const Formulario = () => {
 
-    const {cart, totalPrice, updateItemStock} = useCartContext();
+    const {cart, clear, totalPrice, updateItemStock} = useCartContext();
 
 
     return (
-        <div className='form-container'>
+        <div className='container mt-5'>
             <Formik
                 initialValues={{
-                    name: '',
-                    phone: '',
-                    mail: '',
-                    mailVerif: ''
+                    name: "",
+                    phone: "",
+                    email: "",
+                    emailVerif: ""
                 }}
 
                 validate={(values) => {
                     let err = {}
 
-                    // Validacion nombre
+
                     if (!values.name) {
                         err.name = 'Por favor ingresa un nombre'
                     } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.name)) {
                         err.name = 'El nombre solo puede contener letras y espacios'
                     }
 
-                    // Validacion Telefono
+
                     if (!values.phone) {
-                        err.phone = 'Por favor ingresa un telefono'
+                        err.phone = 'Por favor ingresa un teléfono'
                     } else if (!/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/
                         .test(values.phone)) {
-                        err.phone = 'El formato de telefono ingresado es incorrecto.'
+                        err.phone = 'El teléfono ingresado es incorrecto.'
                     }
 
-                    // Validacion correo
-                    if (!values.mail) {
-                        err.mail = 'Por favor ingresa un correo electronico'
-                    } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.mail)) {
-                        err.mail = 'El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
+                    if (!values.email) {
+                        err.email = 'Por favor ingresa un correo electronico'
+                    } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)) {
+                        err.email = 'El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
                     }
 
-                    // Validacion verifcorreo
-                    if (!values.mailVerif) {
-                        err.mailVerif = 'Por favor repite el correo electronico'
-                    } else if (values.mailVerif !== values.mail) {
-                        err.mailVerif = 'Los correo electronicos deben coincidir'
+                    if (!values.emailVerif) {
+                        err.emailVerif = 'Por favor repite el correo electronico'
+                    } else if (values.emailVerif !== values.email) {
+                        err.emailVerif = 'Debe ser el mismo email'
                     }
 
                     return err
@@ -62,7 +60,7 @@ const Formulario = () => {
                     const newOrder = {
                         buyer: {
                           Nombre: values.name,
-                          Correo: values.mail,
+                          Correo: values.email,
                           Telefono: values.phone,
                         },
                         items: cart,
@@ -70,22 +68,23 @@ const Formulario = () => {
                         total: totalPrice,
                       };
                       const resp = await db.collection("compras").add(newOrder);
-                      swal("Gracias por tu compra!", `Tu orden de compra es: ${resp.id}`, "success");
+                      swal("Gracias por confiar en nosotros!", `Tu orden de compra es: ${resp.id}`, "success");
                       cart.map((item) => {
                         return updateItemStock(item.id, item.stock - item.quantity)
                       })
+                      clear();
                 }}
             >
                 {({ errors }) => (
                     <Form className="container w-50">
                         <div className="form-group">
-                            <label htmlFor="name" className="form-label">Nombre</label>
+                            <label htmlFor="name" className="form-label">Nombre y Apellido</label>
                             <Field
                             className="form-control"
                                 type="text"
                                 id='name'
                                 name='name'
-                                placeholder='Ingrese su nombre completo..'
+                                placeholder='Nombre y Apellido...'
                             />
                             <ErrorMessage name='name' component={() => (
                                 <div className='error'> {errors.name} </div>
@@ -98,40 +97,40 @@ const Formulario = () => {
                                 type="tel"
                                 id='phone'
                                 name='phone'
-                                placeholder='11xxxxxxxx (11 + 8digits) / 54911xxxxxxxx (54911 + 8digits) '
+                                placeholder='11xxxxxxxx (11 + 8digits)'
                             />
                             <ErrorMessage name='phone' component={() => (
                                 <div className='error'> {errors.phone} </div>
                             )} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="mail">Correo</label>
+                            <label htmlFor="email">Email</label>
                             <Field
                             className="form-control"
                                 type="email"
-                                id='mail'
-                                name='mail'
-                                placeholder='mail@mail.com'
+                                id='email'
+                                name='email'
+                                placeholder='correo@email.com'
                             />
-                            <ErrorMessage name='mail' component={() => (
-                                <div className='error'> {errors.mail} </div>
+                            <ErrorMessage name='email' component={() => (
+                                <div className='error'> {errors.email} </div>
                             )} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="mailVerif">Repetir Correo</label>
+                            <label htmlFor="emailVerif">Repetir Email</label>
                             <Field
                             className="form-control"
                                 type="email"
-                                id='mailVerif'
-                                name='mailVerif'
-                                placeholder='mail@mail.com'
+                                id='emailVerif'
+                                name='emailVerif'
+                                placeholder='correo@email.com'
                             />
-                            <ErrorMessage name='mailVerif' component={() => (
-                                <div className='error'> {errors.mailVerif} </div>
+                            <ErrorMessage name='emailVerif' component={() => (
+                                <div className='error'> {errors.emailVerif} </div>
                             )} />
                         </div>
-                        <Link to="/cart"><button className="btn btn-outline-primary rounded-0 m-3" type="submit">Volver atrás</button></Link> 
-                        <button className="btn btn-outline-primary rounded-0 m-3" type="submit">Continuar</button>
+                        <Link to="/cart"><button className="btn btn-outline-secondary rounded-0 m-3" type="submit">Volver atrás</button></Link> 
+                        <button className="btn btn-outline-success rounded-0 m-3" type="submit">Continuar</button>
                     </Form>
                 )}
             </Formik>
