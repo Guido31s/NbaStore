@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,400&display=swap');
 
-html {
-  line-height: 1.5;
-}
-
 
 .App {
   text-align: center;
@@ -14,5 +10,15 @@ html {
 text-decoration: none;
 color: black;
 font-weight: 400;
+}
+
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  padding-bottom: 100px;
 }
 

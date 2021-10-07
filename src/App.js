@@ -1,3 +1,4 @@
+
 import "./App.css";
 import React from "react"
 import NavBar from "./components/NavBar/NavBar";
@@ -8,7 +9,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import CartComponent from "./Views/CartComponent/CartComponent";
 import { CartProvider } from "./context/CartContext";
 import Formulario from "./Views/Formulario/Formulario";
-
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/item/:id" component={ProductDetail} />
               <Route path="/cart" component={CartComponent} />
             </Switch>
+            <Footer />
           </div>
         </Router>
       </CartProvider>
